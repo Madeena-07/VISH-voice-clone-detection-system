@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#07101f" />
+  <meta name="description" content="VISH — Voice Integrity Security Handshake interactive SIH prototype" />
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <title>VISH — Voice Integrity Security Handshake</title>
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.7 20 6v5.7c0 4.8-3.2 8.7-8 10.6-4.8-1.9-8-5.8-8-10.6V6l8-3.3Z"/><path d="m8.6 12.3 2.1 2.1 4.7-5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3.5 10 8.5-7 8.5 7v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10Z"/><path d="M9 21v-7h6v7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.4 3.5 6 4.6c-1.1.5-1.6 1.8-1.2 2.9 2.2 6.1 5.6 9.5 11.7 11.7 1.1.4 2.4-.1 2.9-1.2l1.1-2.4-4.9-2.1-1.2 2c-2.5-1-4.9-3.4-5.9-5.9l2-1.2-2.1-4.9Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h2l2-6 3 12 3-10 2 8 2-4h4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.3 4.3L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7 15h10"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M18 12a6 6 0 0 0-10.2-4.3L5 10M6 12a6 6 0 0 0 10.2 4.3L19 14"/></symbol>
+  </svg>
+
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <aside class="side-rail" aria-label="Primary navigation">
+      <div class="brand brand-desktop">
+        <div class="brand-mark"><svg><use href="#i-shield"/></svg></div>
+        <div><strong>VISH</strong><span>Voice trust security</span></div>
+      </div>
+      <nav class="nav-list" id="desktopNav"></nav>
+      <div class="rail-status">
+        <span class="pulse-dot"></span>
+        <div><strong>Protection active</strong><small>Working engine ready</small></div>
+      </div>
+    </aside>
+
+    <main class="main-stage">
+      <header class="topbar">
+        <div class="brand brand-mobile">
+          <div class="brand-mark"><svg><use href="#i-shield"/></svg></div>
+          <div><strong>VISH</strong><span>Voice trust security</span></div>
+        </div>
+        <div class="topbar-copy">
+          <p class="eyebrow">VOICE INTEGRITY SECURITY HANDSHAKE</p>
+          <h1 id="pageTitle">Protection</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="demoLabBtn" aria-label="Open demo lab" title="Demo lab"><svg><use href="#i-flask"/></svg></button>
+          <button class="avatar" aria-label="Demo profile">MS</button>
+        </div>
+      </header>
+
+      <div class="content" id="content"></div>
+
+      <nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation"></nav>
+    </main>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="modal-root" id="modalRoot"></div>
+
+  <template id="homeTemplate">
+    <section class="hero-card card">
+      <div class="hero-copy">
+        <div class="status-chip"><span class="pulse-dot"></span> PROTECTION ACTIVE</div>
+        <h2>Your voice channel has a security layer.</h2>
+        <p>VISH separates <strong>speaker similarity</strong>, <strong>voice authenticity</strong>, and <strong>transaction authorization</strong>—then escalates only when the evidence justifies it.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-action="start-call"><svg><use href="#i-phone"/></svg> Start protected call</button>
+          <button class="btn btn-secondary" data-action="open-lab"><svg><use href="#i-flask"/></svg> Run attack demo</button>
+        </div>
+      </div>
+      <div class="trust-orb" aria-label="Security engine status">
+        <div class="orb-ring orb-ring-a"></div><div class="orb-ring orb-ring-b"></div>
+        <div class="orb-core"><svg><use href="#i-shield"/></svg><strong>READY</strong><span>Security engine</span></div>
+      </div>
+    </section>
+
+    <section class="section-grid stats-grid">
+      <article class="mini-card"><div class="mini-icon success"><svg><use href="#i-phone"/></svg></div><div><span>Call screening</span><strong>Native Android</strong><small>Integration path available</small></div></article>
+      <article class="mini-card"><div class="mini-icon success"><svg><use href="#i-wave"/></svg></div><div><span>Protected VoIP analysis</span><strong>Available</strong><small>Audio pipeline controlled</small></div></article>
+      <article class="mini-card"><div class="mini-icon warn"><svg><use href="#i-lock"/></svg></div><div><span>Cellular voice analysis</span><strong>Restricted</strong><small>OS capability dependent</small></div></article>
+      <article class="mini-card"><div class="mini-icon info"><svg><use href="#i-check"/></svg></div><div><span>Last security check</span><strong>Just now</strong><small>No action required</small></div></article>
+    </section>
+
+    <section class="two-col">
+      <article class="card dashboard-card">
+        <div class="section-head"><div><p class="eyebrow">RECENT PROTECTED CALL</p><h3>Finance approval · CFO</h3></div><span class="risk-pill low">LOW RISK</span></div>
+        <div class="signal-list">
+          <div class="signal-row"><span>Speaker similarity</span><div class="signal-value"><div class="bar"><i style="width:94%"></i></div><b>94%</b></div></div>
+          <div class="signal-row"><span>Passive spoof evidence</span><div class="signal-value"><span class="metric good">LOW</span></div></div>
+          <div class="signal-row"><span>Audio quality</span><div class="signal-value"><span class="metric good">GOOD</span></div></div>
+          <div class="signal-row"><span>Requested action</span><div class="signal-value"><span class="metric neutral">Review invoice</span></div></div>
+        </div>
+        <div class="explain-strip"><svg><use href="#i-info"/></svg><span>High voice similarity alone never confirms identity. This call remained low-risk because independent evidence was consistent.</span></div>
+      </article>
+
+      <article class="card activity-card">
+        <div class="section-head"><div><p class="eyebrow">SECURITY PULSE</p><h3>Today</h3></div><button class="text-button" data-nav="calls">View all</button></div>
+        <div class="timeline">
+          <div class="timeline-item"><span class="timeline-dot good"></span><div><strong>Protected call verified</strong><p>Passive checks consistent · no challenge needed</p><small>10:42</small></div></div>
+          <div class="timeline-item"><span class="timeline-dot warn"></span><div><strong>Cellular call screened</strong><p>Voice analysis unavailable for this call type</p><small>09:18</small></div></div>
+          <div class="timeline-item"><span class="timeline-dot info"></span><div><strong>Capability check complete</strong><p>Protected channel + screening available</p><small>08:01</small></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="card principle-card">
+      <div><p class="eyebrow">CORE SECURITY PRINCIPLE</p><h3>Recognize the voice. Don’t blindly trust the voice.</h3></div>
+      <div class="principle-flow"><span>Speaker similarity</span><b>≠</b><span>Voice authenticity</span><b>≠</b><span>Transaction authorization</span></div>
+    </section>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
